@@ -1,0 +1,51 @@
+name: terraform-CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:    
+      - uses: actions/checkout@v2
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: terraform
+          path: ${{ github.workspace }}//appservice
+          
+
+  deploy-dev-infra:
+    name: Deploy Infra Dev
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/appservice
+
+    env:
+      user_ocid: ${{ secrets.TF_VAR_user_ocid }}
+      fingerprint: ${{ secrets.TF_VAR_fingerprint }}
+      tenancy_ocid: ${{ secrets.TF_VAR_tenancy_ocid }}
+      compartment_ocid: ${{ secrets.TF_VAR_compartment_ocid }}
+      TF_VAR_region: ${{ secrets.TF_VAR_region }}
+      
+      
+      
+    environment:
+      name: dev
+    
+    needs: build
+    steps:
+      - name: Download Terraform
+        uses: actions/download-artifact@v2
+        with:
+          name: terraform
+          path: ${{ github.workspace }}//appservice
+
+      
+
+    
