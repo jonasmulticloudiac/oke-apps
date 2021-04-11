@@ -5,6 +5,7 @@ variable "compartment_ocid" {}
 variable "region" {}
 variable "private_key_path" {}
 variable "public_key_path" {}
+variable "tf_state" {}
 
 
 variable "VCN-CIDR" {
