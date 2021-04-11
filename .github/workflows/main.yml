@@ -1,6 +1,5 @@
 name: terraform-CI
 
-# Controls when the action will run. 
 on:
   workflow_dispatch:
 
@@ -17,3 +16,18 @@ jobs:
         with:
           name: terraform
           path: ${{ github.workspace }}//appservice
+          
+
+  deploy-dev-infra:
+    name: Deploy Infra Dev
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/appservice
+        
+    environment:
+      name: dev
+      
+
+    
