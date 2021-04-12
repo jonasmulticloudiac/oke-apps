@@ -68,7 +68,7 @@ jobs:
         continue-on-error: true
   
       - name: Terraform Apply
-        run: terraform destroy -auto-approve -lock=false
+        run: terraform apply -auto-approve -lock=false
       
 
     
