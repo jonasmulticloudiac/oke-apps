@@ -45,14 +45,15 @@ jobs:
     steps:
       - name: 'Show variables'
         run: | 
-          echo "user_ocid=${{ secrets.OCI_USER_OCID }}" 
-          edho "fingerprint=${{ secrets.OCI_FINGERPRINT }}"]
-          echo "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}"
-          echo "compartment_ocid=${{ secrets.TF_VAR_compartment_ocid }}"
-          echo "region=${{ secrets.OCI_REGION }}"
-          echo "private_key_path=${{ secrets.OCI_KEY_FILE }}"
-          echo "public_key_path=${{ secrets.TF_VAR_public_key_path }}"
-          echo "tf_state=${{ secrets.TF_VAR_tf_state }}"
+          mkdir ~/.oci
+          echo "user_ocid=${{ secrets.OCI_USER_OCID }}" >> ~/.oci/config 
+          edho "fingerprint=${{ secrets.OCI_FINGERPRINT }}" >> ~/.oci/config
+          echo "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}" >> ~/.oci/config
+          echo "compartment_ocid=${{ secrets.TF_VAR_compartment_ocid }}" >> ~/.oci/config
+          echo "region=${{ secrets.OCI_REGION }}" >> ~/.oci/config
+          echo "private_key_path=${{ secrets.OCI_KEY_FILE }}" >> ~/.oci/config
+          echo "public_key_path=${{ secrets.TF_VAR_public_key_path }}" >> ~/.oci/config
+          echo "tf_state=${{ secrets.TF_VAR_tf_state }}" >> ~/.oci/config
           
       - name: Download Terraform
         uses: actions/download-artifact@v2
