@@ -1,6 +1,6 @@
 # Local .terraform directories
 **/.terraform/*
-**/appservice/terraform.tf
+**/appservice/CICD**
 # .tfstate files
 *.tfstate
 *.tfstate.*
