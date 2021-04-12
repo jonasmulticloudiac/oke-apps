@@ -24,7 +24,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ${{ github.workspace }}/appservice
+        working-directory: ${{ github.workspace }}//appservice
 
     env:
       user_ocid: ${{ secrets.OCI_USER_OCID }}
@@ -43,18 +43,6 @@ jobs:
     
     needs: build
     steps:
-      - name: 'Show variables'
-        run: | 
-          mkdir ~/.oci
-          echo "user_ocid=${{ secrets.OCI_USER_OCID }}" >> ~/.oci/config 
-          edho "fingerprint=${{ secrets.OCI_FINGERPRINT }}" >> ~/.oci/config
-          echo "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}" >> ~/.oci/config
-          echo "compartment_ocid=${{ secrets.TF_VAR_compartment_ocid }}" >> ~/.oci/config
-          echo "region=${{ secrets.OCI_REGION }}" >> ~/.oci/config
-          echo "private_key_path=${{ secrets.OCI_KEY_FILE }}" >> ~/.oci/config
-          echo "public_key_path=${{ secrets.TF_VAR_public_key_path }}" >> ~/.oci/config
-          echo "tf_state=${{ secrets.TF_VAR_tf_state }}" >> ~/.oci/config
-          
       - name: Download Terraform
         uses: actions/download-artifact@v2
         with:
