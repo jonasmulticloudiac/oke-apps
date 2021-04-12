@@ -3,7 +3,7 @@ variable "user_ocid" {}
 variable "fingerprint" { }
 variable "compartment_ocid" {}
 variable "region" {}
-variable "private_key_path" {}
+variable "private_key" {}
 variable "public_key_path" {}
 variable "tf_state" {}
 
