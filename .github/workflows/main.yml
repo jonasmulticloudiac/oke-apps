@@ -27,14 +27,14 @@ jobs:
         working-directory: ${{ github.workspace }}//appservice
 
     env:
-      user_ocid: ${{ secrets.OCI_USER_OCID }}
-      fingerprint: ${{ secrets.OCI_FINGERPRINT }}
-      tenancy_ocid: ${{ secrets.OCI_TENANCY_OCID }}
-      compartment_ocid: ${{ secrets.TF_VAR_compartment_ocid }}
-      region: ${{ secrets.OCI_REGION }}
-      private_key_path: ${{ secrets.OCI_KEY_FILE }}      
-      public_key_path:  ${{ secrets.TF_VAR_public_key_path }}
-      tf_state:  ${{ secrets.TF_VAR_tf_state }}        
+      TF_VAR_user_ocid: ${{ secrets.OCI_USER_OCID }}
+      TF_VAR_fingerprint: ${{ secrets.OCI_FINGERPRINT }}
+      TF_VAR_tenancy_ocid: ${{ secrets.OCI_TENANCY_OCID }}
+      TF_VAR_compartment_ocid: ${{ secrets.TF_VAR_compartment_ocid }}
+      TF_VAR_region: ${{ secrets.OCI_REGION }}
+      TF_VAR_private_key_path: ${{ secrets.OCI_KEY_FILE }}      
+      TF_VAR_public_key_path:  ${{ secrets.TF_VAR_public_key_path }}
+      TF_VAR_tf_state:  ${{ secrets.TF_VAR_tf_state }}        
       verbose: true 
       
       
