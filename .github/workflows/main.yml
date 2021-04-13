@@ -15,7 +15,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: terraform
-          path: ${{ github.workspace }}//appservice
+          path: ${{ github.workspace }}//service
           
 
   deploy-dev-infra:
@@ -24,7 +24,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ${{ github.workspace }}//appservice
+        working-directory: ${{ github.workspace }}//service
 
     env:
       TF_VAR_user_ocid: ${{ secrets.OCI_USER_OCID }}
@@ -47,7 +47,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: terraform
-          path: ${{ github.workspace }}//appservice
+          path: ${{ github.workspace }}//service
           
       - uses: hashicorp/setup-terraform@v1
         with:
