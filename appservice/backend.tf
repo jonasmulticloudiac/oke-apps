@@ -1,11 +1,13 @@
 terraform {
-  backend "http" {
-    update_method = "PUT"
-    address       = terraform_remote_state.proj
-  }
-}
-
-
+   backend "remote" {
+     hostname     = "app.terraform.io"
+     organization = "tcb-okeaserviceapp"
+ 
+     workspaces {
+       name = "oke-apps"
+     }
+   }
+ }
 
 
 
